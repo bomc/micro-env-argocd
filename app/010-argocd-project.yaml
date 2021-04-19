@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: bomc-ms-argocd-proj
+  namespace: argocd
+  # Finalizer that ensures that project is not deleted until it is not referenced by any application
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  # Project description
+  description: A ArgoCD Project to deploy app locally
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  # Only permit to deploy applications in the same cluster
+  destinations:
+  - namespace: 'bomc-consumer-prod'
+    server: 'https://kubernetes.default.svc'
+  - namespace: bomc-publish-prod
+    server: https://kubernetes.default.svc
+  # Allow manifests to deploy only from bomc git repositories
+  sourceRepos:
+  - 'https://github.com/bomc/*'
+  # Enables namespace orphaned resource monitoring.
+#  orphanedResources:
+#    warn: false

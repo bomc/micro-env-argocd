@@ -1,0 +1,19 @@
+- op: add
+  path: "/metadata/annotations"
+  value:
+    # bomc: start
+    annotations:
+      getambassador.io/config: |
+        ---
+        apiVersion: ambassador/v1
+        kind:  Mapping
+        name:  ambassador-publish-mapping-prod
+        #
+        # see https://www.getambassador.io/docs/edge-stack/latest/topics/using/rewrites/
+        # http://10.111.121.174/argocd
+        # would effectively be written to
+        # http://10.111.121.174/argocd
+        #
+        prefix: /argocd/
+        rewrite: /argocd/
+        service: argocd-server:80

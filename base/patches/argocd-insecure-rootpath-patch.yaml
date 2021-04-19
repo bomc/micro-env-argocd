@@ -1,0 +1,10 @@
+- op: add
+  path: "/spec/template/spec/containers/0/command"
+  value:
+    - argocd-server
+    - --staticassets
+    - /shared/app
+    # bomc: add insecure and argocd as rootpath
+    - --insecure
+    - --rootpath
+    - /argocd

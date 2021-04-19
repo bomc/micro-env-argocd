@@ -1,0 +1,10 @@
+apiVersion: getambassador.io/v2
+kind: Mapping
+metadata:
+  name: ambassador-publish-mapping-prod
+  namespace: argocd
+spec:
+  prefix: /argocd/
+  rewrite: /argocd/
+  service: argocd-server:80
+# kubectl apply -f 010-ambassador-mapping.yaml
