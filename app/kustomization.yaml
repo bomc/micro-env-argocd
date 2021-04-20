@@ -8,5 +8,5 @@ commonLabels:
   
 resources:
 - 010-argocd-project.yaml
-- 020-argocd-application-con.yaml
-#- 030-argocd-application-pub.yaml
+- 020-argocd-con-application.yaml
+- 030-argocd-pub-application.yaml

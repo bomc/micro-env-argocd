@@ -19,7 +19,7 @@ spec:
   # Source of the application manifests
   source:
     path: deployment/overlays/prod
-    repoURL: https://github.com/bomc/microservice-con.git
+    repoURL: https://github.com/bomc/micro-env-consumer-app.git
     targetRevision: main
     
   # Sync policy
